@@ -1,0 +1,23 @@
+import { useEffect, useState } from "react";
+
+// Toimii kuten useState, mutta tallentaa arvon selaimen localStorageen.
+export function useLocalStorage(key, initial) {
+  const [value, setValue] = useState(() => {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : initial;
+    } catch {
+      return initial;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+      // tallennus ei onnistunut, sovellus toimii silti
+    }
+  }, [key, value]);
+
+  return [value, setValue];
+}
