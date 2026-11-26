@@ -77,3 +77,179 @@ body {
   color: var(--muted); font: inherit; font-size: 12px; font-weight: 600; cursor: pointer;
 }
 .tabs button[aria-current="page"] { background: var(--green); color: #fff; }
+
+/* ---- Kalenteri-näkymä ---- */
+.tasks small { color: var(--muted); font-weight: 400; }
+.tasks li { display: flex; gap: 8px; align-items: stretch; }
+.tasks li label { flex: 1; }
+.del {
+  border: 0; background: none; color: var(--muted);
+  font-size: 22px; padding: 0 10px; cursor: pointer; border-radius: 12px;
+}
+.del:hover { background: var(--pink); color: var(--pink-ink); }
+
+.weekbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.weekbar h2 { margin: 0; font-size: 16px; text-transform: capitalize; }
+.nav-btn {
+  width: 36px; height: 36px; border: 0; border-radius: 12px;
+  background: var(--green-soft); color: var(--ink); font-size: 20px; cursor: pointer;
+}
+
+.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.day {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 8px 0; border: 2px solid transparent; border-radius: 16px;
+  background: var(--green-soft); color: var(--ink);
+  font: inherit; font-size: 12px; font-weight: 600; cursor: pointer;
+}
+.day b { font-size: 16px; }
+.day.on { background: var(--green); color: #fff; }
+.day.today:not(.on) { border-color: var(--green); }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: var(--pink-ink); }
+.day.on .dot { background: #fff; }
+
+.load { margin: -6px 0 12px; color: var(--muted); font-size: 14px; }
+.card h2:first-letter { text-transform: capitalize; }
+
+.deadline-form { display: grid; gap: 8px; }
+.deadline-form input {
+  min-width: 0; padding: 12px 14px; border: 2px solid var(--green-soft);
+  border-radius: 14px; font: inherit; background: #fff; color: var(--ink);
+}
+.deadline-form .row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 8px; }
+.deadline-form button {
+  padding: 14px; border: 0; border-radius: 14px;
+  background: var(--green); color: #fff; font: inherit; font-weight: 600; cursor: pointer;
+}
+/* ---- Kuukausinäkymä ---- */
+.month { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.dow { text-align: center; font-size: 11px; font-weight: 600; color: var(--muted); padding-bottom: 2px; }
+
+.cell {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  aspect-ratio: 1 / 1.1; padding: 7px 0 4px;
+  border: 2px solid transparent; border-radius: 14px;
+  background: var(--green-soft); color: var(--ink);
+  font: inherit; font-size: 14px; cursor: pointer;
+}
+.cell b { font-weight: 600; }
+.cell.out { opacity: 0.4; }
+.cell.load-1 { background: #fdeef0; }
+.cell.load-2 { background: #f9cfd6; }
+.cell.load-3 { background: #f2a9b6; }
+.cell.today { border-color: var(--green); }
+.cell.on { background: var(--green); color: #fff; }
+
+.dots { display: flex; gap: 2px; min-height: 5px; }
+.dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--pink-ink); }
+.cell.on .dots i { background: #fff; }
+
+.legend { margin: 12px 0 4px; color: var(--muted); font-size: 12px; }
+.link-btn {
+  border: 0; background: none; padding: 6px 0; color: var(--green);
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: underline;
+}
+
+/* ---- Jaksu-maskotti ja etusivun yläkortti ---- */
+.hero { background: linear-gradient(160deg, #ffffff, #f1f8f3 55%, #fdeef0); }
+.hero-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 10px; align-items: start; }
+
+.bubble { border-radius: 18px; padding: 12px 14px; font-size: 13px; line-height: 1.35; }
+.bubble.hello { background: var(--green-soft); }
+.bubble.hello h2 { margin: 0 0 2px; font-size: 18px; }
+.bubble.hello p { margin: 0; color: var(--muted); }
+.bubble.tip { background: var(--pink); color: var(--pink-ink); font-weight: 600; transform: rotate(2deg); }
+
+.jaksu {
+  display: block; width: 150px; height: 150px; margin: 4px auto 12px;
+  animation: jaksu-float 4s ease-in-out infinite;
+}
+@keyframes jaksu-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jaksu { animation: none; }
+}
+
+.mood.m-iloinen { background: #d5e9dc; }
+.mood.m-neutraali { background: #fdf0c4; }
+.mood.m-vasynyt { background: #dfe6fb; }
+.mood.m-kuormittunut { background: #fbdadf; }
+
+/* ---- Hyvinvointi-sivu ---- */
+.card p { line-height: 1.45; }
+.calm { background: linear-gradient(160deg, #ffffff, #e3f1e8); }
+.calm p { margin: 8px 0 0; color: var(--muted); }
+.pill {
+  display: inline-block; margin-bottom: 8px; padding: 4px 10px; border-radius: 999px;
+  background: var(--pink); color: var(--pink-ink); font-size: 12px; font-weight: 600;
+}
+.count { margin-left: 6px; color: var(--muted); font-size: 13px; font-weight: 600; }
+
+.breath { display: grid; justify-items: center; gap: 12px; }
+.breath-stage { position: relative; width: 180px; height: 180px; display: grid; place-items: center; }
+.orb {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, var(--pink) 55%, #f4a3b0);
+  transition-property: transform; transition-timing-function: ease-in-out;
+}
+.breath-text { position: relative; text-align: center; color: var(--pink-ink); }
+.breath-text b { display: block; font-size: 20px; font-weight: 800; }
+.breath-text span { font-size: 14px; font-weight: 600; }
+.start {
+  width: 100%; padding: 14px; border: 0; border-radius: 16px;
+  background: var(--green); color: #fff; font: inherit; font-weight: 800; cursor: pointer;
+}
+.breath .legend { margin: 0; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .orb { transition: none !important; } }
+
+.checks { display: grid; gap: 8px; }
+.check {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+  border: 0; border-radius: 14px; background: var(--mint); color: var(--ink);
+  font: inherit; font-weight: 600; text-align: left; cursor: pointer;
+}
+.tick {
+  margin-left: auto; width: 24px; height: 24px; border-radius: 50%;
+  border: 2px solid var(--green-soft); display: grid; place-items: center;
+  font-size: 14px; color: #fff;
+}
+.check[aria-checked="true"] .tick { background: var(--green); border-color: var(--green); }
+
+.tipcard { background: var(--pink); }
+.tipcard h2 { color: var(--pink-ink); }
+.tipcard p { margin: 0; color: var(--pink-ink); }
+
+.support { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; }
+.support a, .support .nolink {
+  display: flex; flex-direction: column; gap: 2px; padding: 12px 14px;
+  border-radius: 14px; background: var(--green-soft); color: var(--ink); text-decoration: none;
+}
+.support b { font-size: 15px; }
+.support span { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+/* ---- Fiiliskasvot kalenterissa ---- */
+.cell { aspect-ratio: 1 / 1.3; padding: 5px 0 4px; gap: 3px; }
+.cell b { font-size: 11px; }
+
+.face {
+  width: 64%; aspect-ratio: 1; border-radius: 50%;
+  display: grid; place-items: center; font-size: 15px; line-height: 1;
+}
+.face.empty { background: #e4ebe6; }
+.face.none { visibility: hidden; }
+.face.m-iloinen { background: #9fd4b3; }
+.face.m-neutraali { background: #f6dc7f; }
+.face.m-vasynyt { background: #b4c2f3; }
+.face.m-kuormittunut { background: #f4a3b0; }
+/* ---- Kalenterin muodon korjaus ---- */
+.month { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.cell {
+  aspect-ratio: auto; height: 62px; min-width: 0;
+  padding: 4px 0 3px; gap: 2px; overflow: hidden;
+}
+.face { width: min(64%, 28px); }
+.cell.on.out { opacity: 1; }
+
+.face { box-shadow: 0 0 0 2px #fff; }

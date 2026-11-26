@@ -15,7 +15,7 @@ export function useLocalStorage(key, initial) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch {
-      // tallennus ei onnistunut, sovellus toimii silti
+      // tallennus ei onnistunut (esim. yksityinen selaus), sovellus toimii silti
     }
   }, [key, value]);
 
